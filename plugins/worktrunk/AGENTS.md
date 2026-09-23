@@ -37,7 +37,7 @@ worktrunk/                          ← repo root = marketplace root
     │                                  skills/ (test_docs_are_in_sync; never
     │                                  hand-edit) — real files because Codex's
     │                                  installer drops symlinks, see below
-    ├── CLAUDE.md / README.md
+    ├── AGENTS.md / README.md
     └── (Codex activity hooks live *inline* in .codex-plugin/plugin.json's
         `hooks` key — see Known Limitations below)
 ```

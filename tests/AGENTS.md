@@ -44,7 +44,7 @@ Process-scoped scratch space belongs in a fixed directory, not a `TempDir` in a 
 
 `task coverage` runs the suite through nextest and writes an HTML report to `target/llvm-cov/html/index.html`. Coverage uses the same process isolation as the regular suite: PTY tests must not share one crowded test process. Both CI (the `coverage` workflow) and local `task coverage` pass `--features shell-integration-tests`, so code behind that flag is compiled and measured.
 
-When `codecov/patch` fails, investigate before declaring ready (the merge gate itself is in the root `CLAUDE.md` → Coverage):
+When `codecov/patch` fails, investigate before declaring ready (the merge gate itself is in the root `AGENTS.md` → Coverage):
 
 ```bash
 task coverage

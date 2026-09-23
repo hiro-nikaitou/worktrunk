@@ -295,7 +295,7 @@ To regenerate and publish demos:
 task publish-assets
 ```
 
-See `docs/demos/CLAUDE.md` for timing, terminal setup, validation, and recording
+See `docs/demos/AGENTS.md` for timing, terminal setup, validation, and recording
 guidance.
 
 Social-card SVG sources remain in `docs/public/`:
