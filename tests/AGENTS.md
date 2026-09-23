@@ -27,7 +27,7 @@ jq '.files[] | select(.has_diff) | {name: .name.head, patch: .totals.patch}' "$c
 jq '.files[].lines[] | select(.is_diff and .added and .coverage.head == 1) | .number.head' "$codecov_compare"
 ```
 
-The file_report/<path>?sha=<full-sha> endpoint shows whole-file coverage; omit a trailing slash from the path.
+The `file_report/<path>?sha=<full-sha>` endpoint shows whole-file coverage; omit a trailing slash from the path.
 
 ## Running wt Commands in Tests
 

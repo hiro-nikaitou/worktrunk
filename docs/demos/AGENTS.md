@@ -4,7 +4,7 @@ Tapes live in docs/demos/tapes/; shared setup, themes, fixtures, and OCR checkpo
 
 ## Recording and validation
 
-- Build a recording with ./docs/demos/build docs --only <name> or ./docs/demos/build social --only <name>. Docs produces light and dark variants; social produces light only. Each theme needs a fresh demo environment because tapes mutate it.
+- Build a recording with `./docs/demos/build docs --only <name>` or `./docs/demos/build social --only <name>`. Docs produces light and dark variants; social produces light only. Each theme needs a fresh demo environment because tapes mutate it.
 - Use --snapshot for command-output regression snapshots. TUI recordings need GIF inspection and OCR checkpoints in shared/validation.py because text snapshots cannot see nested terminal content. Measure checkpoint windows in the actual GIF; frame counts drift with execution time and terminal size.
 - Use --shell to inspect a prepared demo environment interactively. The build fetches its VHS fork and other dependencies; Claude demos use the authenticated account.
 - Inspect sampled frames across the finished GIF for split commands, warnings, wrong panes, and layout glitches. Confirm visible controls and text at representative states before publishing.

@@ -20,7 +20,7 @@ Use Criterion for repeatable cadence and wt-perf timeline for phase attribution.
 
 ## Analyzing a trace
 
-Run cargo run -p wt-perf -- timeline -- list --progressive for a text timeline, or add --chrome for Perfetto JSON. --progressive enables TTY-gated milestones while stdout is piped. wt config state logs profile reports subprocess totals, slow jobs, concurrency, cache duplicates, and phases from an existing trace.jsonl.
+Run cargo run -p wt-perf -- timeline -- list --progressive for a text timeline, or cargo run -p wt-perf -- timeline --chrome -- list --progressive for Perfetto JSON. --progressive enables TTY-gated milestones while stdout is piped. wt config state logs profile reports subprocess totals, slow jobs, concurrency, cache duplicates, and phases from an existing trace.jsonl.
 
 Ask three questions of a trace: where subprocess time goes (by_type, by_context, slowest), how much work overlaps (parallelism and peak_concurrency), and which same-context commands repeat (cache). Use phases and the Chrome trace to inspect the critical path.
 

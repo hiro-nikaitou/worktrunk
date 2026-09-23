@@ -1,6 +1,6 @@
 # Documentation site
 
-The site uses Astro and Starlight. The project hook installs dependencies, fetches assets, and starts the dev server; wt list shows this worktree's URL. Site checks are npm --prefix docs run check, test, build, and test:site. A config change under a running Astro server may require wt hook post-start docs to clear its content cache.
+The site uses Astro and Starlight. The project hook installs dependencies, fetches assets, and starts the dev server; wt list shows this worktree's URL. Site checks are npm --prefix docs run check, test, build, and test:site. Before the first test:site run, install its browser with npm --prefix docs exec playwright install webkit. A config change under a running Astro server may require wt hook post-start docs to clear its content cache.
 
 For text changes, run the docs sync test and build. For visual changes, inspect the rendered page at desktop and mobile widths, including affected navigation, code blocks, and theme states. Hand over the running preview.
 

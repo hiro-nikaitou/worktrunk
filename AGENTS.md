@@ -36,6 +36,8 @@ The loader paths, generated skills mirror, and cross-tool hook requirements are 
 
 Prefer a clear failure over losing untracked files, uncommitted changes, or user data. Make cleanup a separate action, never a destructive side effect of an unrelated command. Force removal requires explicit consent. Git operations should use their failing variant on races: reset --keep and checkout --merge instead of destructive alternatives.
 
+Be conservative across the gap between a safety check and the operation. If files appear before cleanup, fail rather than force-remove them.
+
 Full-file rewrites of user-owned or externally owned files use utils::write_atomically; creation of an observed-missing file uses write_new_atomically. Shell rc additions append under the installer lock; removal rewrites atomically. A user-named --output path is an intentional replacement. Regenerable caches and diagnostic reports may use ordinary writes. See the write helper contracts for symlink and mode behavior.
 
 Git itself may overwrite an ignored destination file when a tracked file arrives, and core.fsmonitor controls Git's final dirty-worktree gate. The inventory is in the FAQ sections “What files does Worktrunk create?” and “What can Worktrunk delete?”
@@ -68,7 +70,7 @@ Do not carry stash@{n} or another position through a mutation window. Capture an
 
 ### Network Access
 
-Worktrunk touches the network only when the user asks for it. The first Repository::default_branch() is the bounded detection exception: it may use git ls-remote and cache the result; timeout falls back to local inference without caching. No other detection helper adds a wire fallback. A shell-prompt hot path never touches the network. The picker can stream forge results into visible rows and cancel them when the user leaves; a run-to-completion command waits for its last request even after first paint.
+Worktrunk touches the network only when the user asks for it. The first Repository::default_branch() is the bounded detection exception: it may use git ls-remote and cache the result; timeout falls back to local inference without caching. No other detection helper adds a wire fallback. A synchronous shell-prompt hot path never touches the network; wt list statusline may fetch CI status because its host consumes it asynchronously. The picker can stream forge results into visible rows and cancel them when the user leaves; a run-to-completion command waits for its last request even after first paint.
 
 ### Signal Handling: Ctrl-C Cancels the Current Command
 
