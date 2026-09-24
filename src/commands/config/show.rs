@@ -329,7 +329,7 @@ pub(super) fn claude_config_dir() -> Option<PathBuf> {
         if dir == "~" {
             return home_dir();
         }
-        if let Some(rest) = dir.strip_prefix("~/") {
+        if let Ok(rest) = Path::new(&dir).strip_prefix("~") {
             return home_dir().map(|home| home.join(rest));
         }
         return Some(PathBuf::from(dir));
